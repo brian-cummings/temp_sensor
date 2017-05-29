@@ -4,7 +4,4 @@
 
 cd /
 cd home/pi/python/temp_sensor
-{ python update_time.py; } &
 python3 temp_sensor.py
-
-
