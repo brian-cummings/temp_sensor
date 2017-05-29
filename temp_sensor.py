@@ -23,7 +23,7 @@
 import Adafruit_DHT, logging.handlers, os, time, google_connector
 
 file_path = os.getcwd()
-logger = logging.getLogger("simpletest")
+logger = logging.getLogger("temp_sensor")
 
 log_handler = logging.handlers.TimedRotatingFileHandler(file_path + "/logs/sensor.log", when="midnight", backupCount=5)
 formatter = logging.Formatter("%(asctime)s %(levelname)s %(message)s")
@@ -50,7 +50,7 @@ while(True):
 
     if humidity is not None and temperature is not None:
         message = 'Temp={0:0.1f}*F  Humidity={1:0.1f}%'.format(temperature, humidity)
-        google_connector.append_to_sheet("temp_sensor_old",temperature,humidity)
+        google_connector.append_to_sheet("temp_sensor",temperature,humidity)
     else:
         message = 'Failed to get reading. Try again!'
     print(message)
