@@ -1,12 +1,11 @@
-import gspread, datetime, sys
-import netifaces as ni
+import gspread
+import datetime
+import sys
+import get_ip
 from oauth2client.service_account import ServiceAccountCredentials
 
-ni.ifaddresses('wlan0')
-ip = ni.ifaddresses('wlan0')[2][0]['addr']
-
+ip = get_ip.get_ipv4('wlan0')
 GDOCS_OAUTH_JSON = 'API Project-eecc64142440.json'
-
 
 
 def append_to_sheet(spreadsheet, temp, humidity):
