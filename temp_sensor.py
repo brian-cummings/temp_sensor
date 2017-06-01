@@ -53,6 +53,5 @@ while(True):
         google_connector.append_to_sheet("temp_sensor",temperature,humidity)
     else:
         message = 'Failed to get reading. Try again!'
-    print(message)
     logger.info(message)
     time.sleep(30)

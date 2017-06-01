@@ -98,3 +98,6 @@ ENV/
 .gitignore
 .idea/
 API Project-eecc64142440.json
+/config.ini
+config.ini
+!/.gitignore
