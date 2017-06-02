@@ -23,4 +23,4 @@ def append_to_sheet(spreadsheet, temp, humidity):
         worksheet = None
         sys.exit(1)
 
-    print('Wrote a row to {0}'.format(spreadsheet))
+
