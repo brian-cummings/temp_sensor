@@ -17,9 +17,6 @@ def append_to_sheet(spreadsheet, temp, humidity):
         worksheet = gc.open(spreadsheet).sheet1
         worksheet.append_row((datetime.datetime.now(), temp, humidity, ip))
     except Exception as ex:
-        print(
-        'Unable to login and get spreadsheet.  Check OAuth credentials, spreadsheet name, and make sure spreadsheet is shared to the client_email address in the OAuth .json file!')
-        print('Google sheet login failed with error:', ex)
         worksheet = None
         sys.exit(1)
 

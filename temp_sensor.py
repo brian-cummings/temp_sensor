@@ -26,7 +26,13 @@ while(True):
 
     if humidity is not None and temperature is not None:
         message = 'Temp={0:0.1f}*F  Humidity={1:0.1f}%'.format(temperature, humidity)
-        google_connector.append_to_sheet("temp_sensor",temperature,humidity)
+        try:
+            google_connector.append_to_sheet("temp_sensor",temperature,humidity)
+        except KeyboardInterrupt:
+            raise
+        except:
+            message = 'Google connector failed'
+            pass
     else:
         message = 'Failed to get reading. Try again!'
     logger.info(message)
