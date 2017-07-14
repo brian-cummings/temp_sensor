@@ -1,6 +1,6 @@
 #!/bin/sh
 # launcher.sh
-# navigate to home directory, then to this directory, then execute python scrip$
+# navigate to home directory, then to this directory, then execute python script
 
 cd /
 cd home/pi/python/temp_sensor
@@ -10,4 +10,4 @@ while ! ping -c 1 -W 1 8.8.8.8; do
 done
 sudo nano ntpdate -u pool.ntp.org
 python send_ip.py
-python3 temp_sensor.py
+python temp_sensor.py

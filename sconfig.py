@@ -6,7 +6,7 @@ config = ConfigParser.ConfigParser()
 config.read(file_path)
 
 
-def sparkpost_credentials(section):
+def config_section(section):
     dict1 = {}
     options = config.options(section)
     for option in options:

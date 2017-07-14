@@ -2,8 +2,8 @@ import sys
 from sparkpost import SparkPost
 import sconfig
 
-sp_token = sconfig.sparkpost_credentials("spark-config")["spark-token"]
-recipient = sconfig.sparkpost_credentials("spark-config")["recipient"]
+sp_token = sconfig.config_section("spark-config")["spark-token"]
+recipient = sconfig.config_section("spark-config")["recipient"]
 
 sp = SparkPost(sp_token)
 

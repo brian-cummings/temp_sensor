@@ -1,6 +1,6 @@
 #!/usr/bin/python
 
-import Adafruit_DHT, logging.handlers, os, time, google_connector
+import Adafruit_DHT, logging.handlers, os, time, google_connector, particle_caller
 
 file_path = os.getcwd()
 logger = logging.getLogger("temp_sensor")
@@ -16,22 +16,23 @@ sensor = Adafruit_DHT.DHT22
 
 
 
-pin = 22
+pin = 4
 while(True):
 # Try to grab a sensor reading.  Use the read_retry method which will retry up
 # to 15 times to get a sensor reading (waiting 2 seconds between each retry).
     humidity, temperature = Adafruit_DHT.read_retry(sensor, pin)
-    temperature = temperature * 1.8 + 32
 
 
     if humidity is not None and temperature is not None:
+        temperature = temperature * 1.8 + 32
         message = 'Temp={0:0.1f}*F  Humidity={1:0.1f}%'.format(temperature, humidity)
         try:
-            google_connector.append_to_sheet("temp_sensor",temperature,humidity)
+            response = particle_caller.set_temp(temperature)
+            #google_connector.append_to_sheet("temp_sensor",temperature,humidity)
         except KeyboardInterrupt:
             raise
         except:
-            message = 'Google connector failed'
+            message = response
             pass
     else:
         message = 'Failed to get reading. Try again!'
