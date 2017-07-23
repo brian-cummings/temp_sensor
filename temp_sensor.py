@@ -13,7 +13,7 @@ logger.setLevel(logging.INFO)
 # Sensor should be set to Adafruit_DHT.DHT11,
 # Adafruit_DHT.DHT22, or Adafruit_DHT.AM2302.
 sensor = Adafruit_DHT.DHT22
-
+temp_modifier = -9
 
 
 pin = 4
@@ -24,7 +24,7 @@ while(True):
 
 
     if humidity is not None and temperature is not None:
-        temperature = temperature * 1.8 + 32
+        temperature = (temperature * 1.8 + 32) + temp_modifier
         message = 'Temp={0:0.1f}*F  Humidity={1:0.1f}%'.format(temperature, humidity)
         try:
             response = particle_caller.set_temp(temperature)
