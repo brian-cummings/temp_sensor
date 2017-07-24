@@ -13,7 +13,7 @@ logger.setLevel(logging.INFO)
 # Sensor should be set to Adafruit_DHT.DHT11,
 # Adafruit_DHT.DHT22, or Adafruit_DHT.AM2302.
 sensor = Adafruit_DHT.DHT22
-temp_modifier = -9
+temp_modifier = -8.5
 
 
 pin = 4

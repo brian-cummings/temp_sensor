@@ -1,10 +1,11 @@
 import sys
 from sparkpost import SparkPost
 import sconfig
+import socket
 
 sp_token = sconfig.config_section("spark-config")["spark-token"]
 recipient = sconfig.config_section("spark-config")["recipient"]
-
+hostname = socket.gethostname()
 sp = SparkPost(sp_token)
 
 
@@ -14,7 +15,8 @@ def send_ip(ip):
             recipients=[recipient],
             template="pi-online",
             substitution_data={
-                "ip": ip
+                "ip": ip,
+                "hostname": hostname
             }
         )
     except:
